@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+import { MONGODB_URI, MONGODB_OPTIONS } from "./mongodb.config.js";
 
 export default async function connectDB() {
-  const mongoUri = process.env.MONGODB_URI || "mongodb+srv://renanpicoramos2004_db_user:ey9H8uHR3GDjngIR@cluster0.mgqgxaw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+  const mongoUri = MONGODB_URI;
   if (mongoose.connection.readyState === 1) return;
-  await mongoose.connect(mongoUri);
+  await mongoose.connect(mongoUri, MONGODB_OPTIONS);
 }
