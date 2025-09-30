@@ -10,6 +10,7 @@ const port = process.env.PORT || 5173;
 const mime = {
   ".html": "text/html; charset=utf-8",
   ".js": "application/javascript; charset=utf-8",
+  ".jsx": "application/javascript; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".json": "application/json; charset=utf-8",
   ".svg": "image/svg+xml",
@@ -43,4 +44,3 @@ const server = http.createServer(async (req, res) => {
 server.listen(port, () => {
   console.log(`Frontend running at http://localhost:${port}`);
 });
-

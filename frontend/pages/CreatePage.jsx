@@ -1,9 +1,8 @@
+import { jsxDEV } from "react/jsx-dev-runtime";
 import React from "react";
-import htm from "htm";
 import { API } from "../api.js";
 import { useAsync } from "../utils/useAsync.js";
-import { Field } from "../components/Field.js";
-const html = htm.bind(React.createElement);
+import { Field } from "../components/Field.jsx";
 function CreatePage() {
   const [form, setForm] = React.useState({
     cnpj: "",
@@ -45,7 +44,7 @@ function CreatePage() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await runCreate({ ...form, cnpj: (form.cnpj || "").replace(/\\D/g, "") });
+      await runCreate({ ...form, cnpj: (form.cnpj || "").replace(/\D/g, "") });
       setForm({
         cnpj: "",
         nome: "",
@@ -63,65 +62,183 @@ function CreatePage() {
     } catch {
     }
   };
-  return html`
-    <section class="main">
-      <div class="header">
-        <div class="h1">Cadastrar Empresa</div>
-        <div class="status">${state.loading ? "Salvando..." : ""}</div>
-      </div>
-      <div class="card">
-        <form onSubmit=${onSubmit}>
-          <div class="grid">
-            ${html`<${Field} label="CNPJ">
-              <input class="input" value=${form.cnpj} onInput=${onChange("cnpj")} placeholder="00.000.000/0000-00" required />
-            </${Field}>`}
-            ${html`<${Field} label="Nome">
-              <input class="input" value=${form.nome} onInput=${onChange("nome")} />
-            </${Field}>`}
-            ${html`<${Field} label="Fantasia">
-              <input class="input" value=${form.fantasia} onInput=${onChange("fantasia")} />
-            </${Field}>`}
-            ${html`<${Field} label="Email">
-              <input type="email" class="input" value=${form.email} onInput=${onChange("email")} />
-            </${Field}>`}
-            ${html`<${Field} label="Telefone">
-              <input class="input" value=${form.telefone} onInput=${onChange("telefone")} />
-            </${Field}>`}
-            ${html`<${Field} label="CEP">
-              <input class="input" value=${form.cep} onInput=${onChange("cep")} />
-            </${Field}>`}
-            ${html`<${Field} label="Logradouro">
-              <input class="input" value=${form.logradouro} onInput=${onChange("logradouro")} />
-            </${Field}>`}
-            ${html`<${Field} label="Número">
-              <input class="input" value=${form.numero} onInput=${onChange("numero")} />
-            </${Field}>`}
-            ${html`<${Field} label="Complemento">
-              <input class="input" value=${form.complemento} onInput=${onChange("complemento")} />
-            </${Field}>`}
-            ${html`<${Field} label="Bairro">
-              <input class="input" value=${form.bairro} onInput=${onChange("bairro")} />
-            </${Field}>`}
-            ${html`<${Field} label="Município">
-              <input class="input" value=${form.municipio} onInput=${onChange("municipio")} />
-            </${Field}>`}
-            ${html`<${Field} label="UF">
-              <input class="input" value=${form.uf} onInput=${onChange("uf")} />
-            </${Field}>`}
-          </div>
-          <div style="height:14px"></div>
-          <div class="row">
-            <button class="btn secondary" type="button" onClick=${fillFromConsulta} disabled=${autoState.loading}>
-              ${autoState.loading ? "Buscando..." : "Preencher via ReceitaWS"}
-            </button>
-            <button class="btn" type="submit" disabled=${state.loading}>Salvar</button>
-          </div>
-          ${state.error && html`<p class="meta" style="margin-top:10px;color:#c00;">${state.error}</p>`}
-          ${state.data && html`<p class="meta" style="margin-top:10px;color:#0a0;">Empresa salva!</p>`}
-        </form>
-      </div>
-    </section>
-  `;
+  return /* @__PURE__ */ jsxDEV("section", { className: "main", children: [
+    /* @__PURE__ */ jsxDEV("div", { className: "header", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "h1", children: "Cadastrar Empresa" }, void 0, false, {
+        fileName: "<stdin>",
+        lineNumber: 69,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "status", children: state.loading ? "Salvando..." : "" }, void 0, false, {
+        fileName: "<stdin>",
+        lineNumber: 70,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "<stdin>",
+      lineNumber: 68,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV("div", { className: "card", children: /* @__PURE__ */ jsxDEV("form", { onSubmit, children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "grid", children: [
+        /* @__PURE__ */ jsxDEV(Field, { label: "CNPJ", children: /* @__PURE__ */ jsxDEV("input", { className: "input", value: form.cnpj, onInput: onChange("cnpj"), placeholder: "00.000.000/0000-00", required: true }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 76,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 75,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(Field, { label: "Nome", children: /* @__PURE__ */ jsxDEV("input", { className: "input", value: form.nome, onInput: onChange("nome") }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 79,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 78,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(Field, { label: "Fantasia", children: /* @__PURE__ */ jsxDEV("input", { className: "input", value: form.fantasia, onInput: onChange("fantasia") }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 82,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 81,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(Field, { label: "Email", children: /* @__PURE__ */ jsxDEV("input", { type: "email", className: "input", value: form.email, onInput: onChange("email") }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 85,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 84,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(Field, { label: "Telefone", children: /* @__PURE__ */ jsxDEV("input", { className: "input", value: form.telefone, onInput: onChange("telefone") }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 88,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 87,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(Field, { label: "CEP", children: /* @__PURE__ */ jsxDEV("input", { className: "input", value: form.cep, onInput: onChange("cep") }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 91,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 90,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(Field, { label: "Logradouro", children: /* @__PURE__ */ jsxDEV("input", { className: "input", value: form.logradouro, onInput: onChange("logradouro") }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 94,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 93,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(Field, { label: "N\xFAmero", children: /* @__PURE__ */ jsxDEV("input", { className: "input", value: form.numero, onInput: onChange("numero") }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 97,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 96,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(Field, { label: "Complemento", children: /* @__PURE__ */ jsxDEV("input", { className: "input", value: form.complemento, onInput: onChange("complemento") }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 100,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 99,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(Field, { label: "Bairro", children: /* @__PURE__ */ jsxDEV("input", { className: "input", value: form.bairro, onInput: onChange("bairro") }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 103,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 102,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(Field, { label: "Munic\xEDpio", children: /* @__PURE__ */ jsxDEV("input", { className: "input", value: form.municipio, onInput: onChange("municipio") }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 106,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 105,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV(Field, { label: "UF", children: /* @__PURE__ */ jsxDEV("input", { className: "input", value: form.uf, onInput: onChange("uf") }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 109,
+          columnNumber: 15
+        }, this) }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 108,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "<stdin>",
+        lineNumber: 74,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { style: { height: "14px" } }, void 0, false, {
+        fileName: "<stdin>",
+        lineNumber: 112,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "row", children: [
+        /* @__PURE__ */ jsxDEV("button", { className: "btn secondary", type: "button", onClick: fillFromConsulta, disabled: autoState.loading, children: autoState.loading ? "Buscando..." : "Preencher via ReceitaWS" }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 114,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ jsxDEV("button", { className: "btn", type: "submit", disabled: state.loading, children: "Salvar" }, void 0, false, {
+          fileName: "<stdin>",
+          lineNumber: 117,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, true, {
+        fileName: "<stdin>",
+        lineNumber: 113,
+        columnNumber: 11
+      }, this),
+      state.error && /* @__PURE__ */ jsxDEV("p", { className: "meta", style: { marginTop: "10px", color: "#c00" }, children: state.error }, void 0, false, {
+        fileName: "<stdin>",
+        lineNumber: 119,
+        columnNumber: 27
+      }, this),
+      state.data && /* @__PURE__ */ jsxDEV("p", { className: "meta", style: { marginTop: "10px", color: "#0a0" }, children: "Empresa salva!" }, void 0, false, {
+        fileName: "<stdin>",
+        lineNumber: 120,
+        columnNumber: 26
+      }, this)
+    ] }, void 0, true, {
+      fileName: "<stdin>",
+      lineNumber: 73,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "<stdin>",
+      lineNumber: 72,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "<stdin>",
+    lineNumber: 67,
+    columnNumber: 5
+  }, this);
 }
 export {
   CreatePage
