@@ -22,5 +22,32 @@ export const API = {
     if (!r.ok) throw new Error((await r.json()).message || "Falha ao cadastrar");
     return r.json();
   },
+  async updateCompany(cnpj, payload) {
+    const API_BASE = window.__API_BASE__ || (location.hostname === "localhost" ? "http://localhost:3000" : "");
+    const normalized = (cnpj || "").replace(/\D/g, "");
+    const r = await fetch(`${API_BASE}/api/companies/${normalized}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!r.ok) throw new Error((await r.json()).message || "Falha ao atualizar");
+    return r.json();
+  },
+  async deleteCompany(cnpj) {
+    const API_BASE = window.__API_BASE__ || (location.hostname === "localhost" ? "http://localhost:3000" : "");
+    const normalized = (cnpj || "").replace(/\D/g, "");
+    const r = await fetch(`${API_BASE}/api/companies/${normalized}`, {
+      method: "DELETE",
+    });
+    if (!r.ok) throw new Error((await r.json()).message || "Falha ao excluir");
+    return r.json();
+  },
+  async getCompanyByCNPJ(cnpj) {
+    const API_BASE = window.__API_BASE__ || (location.hostname === "localhost" ? "http://localhost:3000" : "");
+    const normalized = (cnpj || "").replace(/\D/g, "");
+    const r = await fetch(`${API_BASE}/api/companies/${normalized}`);
+    if (!r.ok) throw new Error((await r.json()).message || "Empresa não encontrada");
+    return r.json();
+  },
 };
 

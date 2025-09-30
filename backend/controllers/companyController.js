@@ -39,3 +39,31 @@ export async function getCompanyByCNPJ(req, res) {
   }
 }
 
+export async function updateCompany(req, res) {
+  try {
+    const cnpj = normalizeCNPJ(req.params.cnpj);
+    const body = req.body || {};
+    delete body.cnpj; // Cannot change CNPJ
+    
+    const doc = await Company.findOneAndUpdate(
+      { cnpj },
+      { $set: body },
+      { new: true }
+    );
+    if (!doc) return res.status(404).json({ message: "Empresa não encontrada" });
+    res.json(doc);
+  } catch (e) {
+    res.status(500).json({ message: "Falha ao atualizar", error: String(e) });
+  }
+}
+
+export async function deleteCompany(req, res) {
+  try {
+    const cnpj = normalizeCNPJ(req.params.cnpj);
+    const doc = await Company.findOneAndDelete({ cnpj });
+    if (!doc) return res.status(404).json({ message: "Empresa não encontrada" });
+    res.json({ message: "Empresa excluída com sucesso" });
+  } catch (e) {
+    res.status(500).json({ message: "Falha ao excluir", error: String(e) });
+  }
+}

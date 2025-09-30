@@ -13,6 +13,12 @@ const CompanySchema = new mongoose.Schema({
   municipio: String,
   uf: String,
   cep: String,
+  situacao: String,
+  abertura: String,
+  tipo: String,
+  porte: String,
+  natureza_juridica: String,
+  atividade_principal: String,
 }, { timestamps: true });
 
 export default mongoose.model("Company", CompanySchema);
